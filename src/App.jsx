@@ -2,6 +2,7 @@ import ComponentsImage from "./assets/Components.png"
 import { CORE_CONCEPTS } from "./data";
 import Header from "./compnents/Header/Header.jsx";
 import  { CoreConcept }  from "./compnents/CoreConcept";
+import TabButton from "./compnents/TabButton.jsx";
 
 // function CorConcept(props) {
 //   return(
@@ -14,6 +15,10 @@ import  { CoreConcept }  from "./compnents/CoreConcept";
 // }
 
 function App() {
+  function selectHandler()
+    {
+        console.log('Hello World - selected !');
+    }
   return (
     <div>
       <Header></Header>
@@ -25,6 +30,15 @@ function App() {
             <CoreConcept {...CORE_CONCEPTS[2]}/>
             <CoreConcept {...CORE_CONCEPTS[3]}/>
           </ul>
+        </section>
+        <section id="examples">
+          <h2>Examples</h2>
+            <menu>
+              <TabButton onSelect = {selectHandler}>Components</TabButton>
+              <TabButton onSelect = {selectHandler}>Jsx</TabButton>
+              <TabButton onSelect = {selectHandler}>Props</TabButton>
+              <TabButton onSelect = {selectHandler}>State</TabButton>
+            </menu>
         </section>
       </main>
     </div>
