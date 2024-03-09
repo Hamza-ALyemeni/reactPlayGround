@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ComponentsImage from "./assets/Components.png"
 import { CORE_CONCEPTS } from "./data";
 import Header from "./compnents/Header/Header.jsx";
@@ -15,9 +16,16 @@ import TabButton from "./compnents/TabButton.jsx";
 // }
 
 function App() {
-  function selectHandler()
+  const [selectedTopic , setSelectedTopic] = useState("please click a button");
+
+  // this will not work because components run once
+  // let tabContent = "Please click a button";
+
+  function selectHandler(selectedButton)
     {
-        console.log('Hello World - selected !');
+        // tabContent = selectedButton;
+        setSelectedTopic(selectedButton);
+        console.log(selectedTopic);
     }
   return (
     <div>
@@ -34,11 +42,12 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
             <menu>
-              <TabButton onSelect = {selectHandler}>Components</TabButton>
-              <TabButton onSelect = {selectHandler}>Jsx</TabButton>
-              <TabButton onSelect = {selectHandler}>Props</TabButton>
-              <TabButton onSelect = {selectHandler}>State</TabButton>
+              <TabButton onSelect = {() => selectHandler("Components")}>Components</TabButton>
+              <TabButton onSelect = {() => selectHandler("Jsx")}>Jsx</TabButton>
+              <TabButton onSelect = {() => selectHandler("Props")}>Props</TabButton>
+              <TabButton onSelect = {() => selectHandler("State")}>State</TabButton>
             </menu>
+            {selectedTopic}
         </section>
       </main>
     </div>
