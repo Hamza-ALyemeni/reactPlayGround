@@ -1,9 +1,10 @@
 import { useState } from "react";
 import ComponentsImage from "./assets/Components.png"
-import { CORE_CONCEPTS } from "./data";
+import { CORE_CONCEPTS } from "./data-with-examples";
 import Header from "./compnents/Header/Header.jsx";
 import  { CoreConcept }  from "./compnents/CoreConcept";
 import TabButton from "./compnents/TabButton.jsx";
+import { EXAMPLES } from "./data-with-examples";
 
 // function CorConcept(props) {
 //   return(
@@ -16,7 +17,7 @@ import TabButton from "./compnents/TabButton.jsx";
 // }
 
 function App() {
-  const [selectedTopic , setSelectedTopic] = useState("please click a button");
+  const [selectedTopic , setSelectedTopic] = useState();
 
   // this will not work because components run once
   // let tabContent = "Please click a button";
@@ -26,6 +27,21 @@ function App() {
         // tabContent = selectedButton;
         setSelectedTopic(selectedButton);
         console.log(selectedTopic);
+    }
+
+    let tabContent = <p>Please select a topic.</p>;
+
+    if (selectedTopic) {
+      tabContent = (
+        <div id="tab-content">
+        <h3>{EXAMPLES[selectedTopic].title}</h3>
+        <p>{EXAMPLES[selectedTopic].description}</p>
+        <pre>
+          <code>
+            {EXAMPLES[selectedTopic].code}
+          </code>
+        </pre>
+      </div>);
     }
   return (
     <div>
@@ -42,13 +58,13 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
             <menu>
-              <TabButton onSelect = {() => selectHandler("Components")}>Components</TabButton>
-              <TabButton onSelect = {() => selectHandler("Jsx")}>Jsx</TabButton>
-              <TabButton onSelect = {() => selectHandler("Props")}>Props</TabButton>
-              <TabButton onSelect = {() => selectHandler("State")}>State</TabButton>
+              <TabButton onSelect = {() => selectHandler("components")}>Components</TabButton>
+              <TabButton onSelect = {() => selectHandler("jsx")}>Jsx</TabButton>
+              <TabButton onSelect = {() => selectHandler("props")}>Props</TabButton>
+              <TabButton onSelect = {() => selectHandler("state")}>State</TabButton>
             </menu>
-            {selectedTopic}
-        </section>
+            {tabContent}
+          </section>
       </main>
     </div>
   );
