@@ -49,19 +49,19 @@ function App() {
       <main>
         <section id="core-concepts">
           <ul>
-            <CoreConcept title={CORE_CONCEPTS[0].title} description = {CORE_CONCEPTS[0].description} image={CORE_CONCEPTS[0].image}/>
-            <CoreConcept title={CORE_CONCEPTS[1].title} description = {CORE_CONCEPTS[1].description} image={CORE_CONCEPTS[1].image}/>
-            <CoreConcept {...CORE_CONCEPTS[2]}/>
-            <CoreConcept {...CORE_CONCEPTS[3]}/>
+            <CoreConcept  title={CORE_CONCEPTS[0].title} description = {CORE_CONCEPTS[0].description} image={CORE_CONCEPTS[0].image}/>
+            <CoreConcept  title={CORE_CONCEPTS[1].title} description = {CORE_CONCEPTS[1].description} image={CORE_CONCEPTS[1].image}/>
+            <CoreConcept  {...CORE_CONCEPTS[2]}/>
+            <CoreConcept  {...CORE_CONCEPTS[3]}/>
           </ul>
         </section>
         <section id="examples">
           <h2>Examples</h2>
             <menu>
-              <TabButton onSelect = {() => selectHandler("components")}>Components</TabButton>
-              <TabButton onSelect = {() => selectHandler("jsx")}>Jsx</TabButton>
-              <TabButton onSelect = {() => selectHandler("props")}>Props</TabButton>
-              <TabButton onSelect = {() => selectHandler("state")}>State</TabButton>
+              <TabButton isSelected = {selectedTopic === 'components'} onSelect = {() => selectHandler("components")}>Components</TabButton>
+              <TabButton isSelected = {selectedTopic === 'jsx'} onSelect = {() => selectHandler("jsx")}>Jsx</TabButton>
+              <TabButton isSelected = {selectedTopic === 'props'} onSelect = {() => selectHandler("props")}>Props</TabButton>
+              <TabButton isSelected = {selectedTopic === 'state'} onSelect = {() => selectHandler("state")}>State</TabButton>
             </menu>
             {tabContent}
           </section>
