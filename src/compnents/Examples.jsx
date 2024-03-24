@@ -36,7 +36,6 @@ export default function Examples(){
         <Section id="examples" className="">
           <h2>Examples</h2>
           <Tabs 
-          ButtonsComponent ="menu"
           buttons={<>
               <TabButton isSelected = {selectedTopic === 'components'} onSelect = {() => selectHandler("components")}>Components</TabButton>
               <TabButton isSelected = {selectedTopic === 'jsx'} onSelect = {() => selectHandler("jsx")}>Jsx</TabButton>
