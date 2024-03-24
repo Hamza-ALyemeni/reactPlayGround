@@ -1,7 +1,7 @@
-export default function Tabs({children,buttons}) {
+export default function Tabs({children,buttons,ButtonsComponent}) {
     return(
         <>
-            <menu>{buttons}</menu>
+            <ButtonsComponent>{buttons}</ButtonsComponent>
             {children}
         </>
     );
